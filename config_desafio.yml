@@ -1,0 +1,238 @@
+# ============================================================================
+# DESAFÍO: ¿QUÉ ALUMNOS VAN A ABANDONAR LA ESCUELA EN 2022?
+# Chile - MINEDUC
+#
+# Objetivo:
+# Estimar la probabilidad de abandono de los alumnos de 2021
+# y distribuir un presupuesto de USD 1.000.000.
+#
+# Ejecución desde la carpeta principal:
+# Rscript R/0_EXE_desafio.R config_desafio.yml
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# EXPERIMENTO
+# ----------------------------------------------------------------------------
+
+experiment:
+  exp_dir_py: "./exp_py"
+  exp_dir_r: "./exp_r"
+  experiment_code: "desafio_2021"
+
+
+# ----------------------------------------------------------------------------
+# DATOS
+# ----------------------------------------------------------------------------
+
+datos:
+
+  # Histórico con variable objetivo (2014-2020)
+  archivo: "../desafio_ministerio/chile_2014_2020.csv.gz"
+
+  # Foto de alumnos para los que se debe predecir (2021)
+  archivo_prediccion: "../desafio_ministerio/chile_2021.csv.gz"
+
+  id: "id_alumno"
+  escuela: "id_escuela"
+  periodo: "agno"
+
+  # 1 = abandona al año siguiente
+  clase: "abandono_t1"
+
+  # Los alumnos que egresan no forman parte de la población objetivo
+  sacar_egresados: TRUE
+
+
+# ----------------------------------------------------------------------------
+# PARÁMETROS DEL DESAFÍO
+# ----------------------------------------------------------------------------
+
+desafio:
+
+  anio_foto: 2021
+  anio_prediccion: 2022
+  ultimo_anio_entrenamiento: 2020
+
+  presupuesto_usd: 1000000
+
+
+# ----------------------------------------------------------------------------
+# VARIABLES ORIGINALES
+# ----------------------------------------------------------------------------
+
+variables_crudas:
+
+  - "cod_reg_rbd"
+  - "cod_com_rbd"
+  - "cod_depe2"
+  - "rural_rbd"
+  - "cod_ense2"
+  - "cod_grado"
+  - "cod_jor"
+  - "cod_rama"
+  - "cod_espe"
+  - "gen_alu"
+  - "edad"
+  - "prom_gral"
+  - "asistencia"
+  - "sit_fin"
+  - "n_reg"
+  - "cambio_esc_anio"
+  - "esc_n"
+  - "esc_prom"
+  - "esc_asist"
+  - "esc_rep"
+  - "esc_ab_lag"
+
+
+# ----------------------------------------------------------------------------
+# VARIABLES CATEGÓRICAS PARA REGRESIÓN LOGÍSTICA
+# ----------------------------------------------------------------------------
+
+categoricas_logistica:
+
+  - "cod_depe2"
+  - "cod_ense2"
+  - "sit_fin"
+  - "cod_jor"
+
+
+# Variables que no entran en la regresión logística
+# por tener demasiadas categorías
+
+no_logistica:
+
+  - "cod_reg_rbd"
+  - "cod_com_rbd"
+  - "cod_rama"
+  - "cod_espe"
+
+
+# ----------------------------------------------------------------------------
+# FEATURE ENGINEERING
+# Variables construidas a partir de la historia del alumno
+# ----------------------------------------------------------------------------
+
+feature_engineering:
+
+  # Variables del año anterior
+  lag_1:
+    - "prom_gral"
+    - "asistencia"
+    - "sit_fin"
+
+  # Diferencias respecto del año anterior
+  delta:
+    - "prom_gral"
+    - "asistencia"
+
+  # Historia del alumno
+  historia: TRUE
+
+  # Diferencia entre edad y edad típica del grupo
+  sobreedad: TRUE
+
+  # Comparación del alumno con su escuela
+  vs_escuela: TRUE
+
+
+# ----------------------------------------------------------------------------
+# ESTRATEGIA DE PARTICIÓN TEMPORAL
+# ----------------------------------------------------------------------------
+
+training_strategy:
+
+  # Datos utilizados para entrenar los modelos iniciales
+  train:
+    - 2015
+    - 2016
+
+  # Año utilizado para seleccionar hiperparámetros
+  validate: 2017
+
+  # Año utilizado para evaluar modelos
+  test: 2018
+
+  # Datos para el entrenamiento final
+  train_final:
+    - 2015
+    - 2017
+
+  # Años adicionales para evaluar estabilidad temporal
+  otros_anios:
+    - 2019
+    - 2020
+
+
+# ----------------------------------------------------------------------------
+# MÉTODOS DE MODELADO
+# ----------------------------------------------------------------------------
+
+metodos:
+
+  semilla: 102191
+
+  # Muestra para métodos computacionalmente más lentos
+  muestra_lentos: 300000
+
+  arbol:
+    max_depth: 6
+    min_samples_leaf: 500
+
+  random_forest:
+    n_estimators: 200
+    min_samples_leaf: 50
+
+
+# ----------------------------------------------------------------------------
+# BÚSQUEDA DE HIPERPARÁMETROS - LIGHTGBM
+# ----------------------------------------------------------------------------
+
+hyperparameter_tuning:
+
+  semilla: 102191
+
+  # Diseño inicial
+  intentos_al_azar: 12
+
+  # Iteraciones posteriores de optimización bayesiana
+  iteraciones: 8
+
+  num_iterations_max: 1000
+
+  rangos:
+
+    learning_rate:
+      - 0.03
+      - 0.3
+
+    num_leaves:
+      - 8
+      - 256
+
+    min_data_in_leaf:
+      - 50
+      - 5000
+
+    feature_fraction:
+      - 0.3
+      - 0.9
+
+    lambda_l2:
+      - 0
+      - 10
+
+
+# ----------------------------------------------------------------------------
+# AUTOGLUON (OPCIONAL - PYTHON)
+# ----------------------------------------------------------------------------
+
+autogluon:
+
+  presets: "medium_quality"
+
+  time_limit: 900
+
+  usar_fe: TRUE
+
