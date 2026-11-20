@@ -4,7 +4,7 @@ Se pretende obtener una distribución optima de subsidios a la educación para e
 
 Se busca distribuir USD 1.000.000 entre los estudiantes que muestran la mayor probabilidad a abandonar el colegio.
 
-En este contexto, la validación final se hará contra los datos del ministerio
+En este contexto, la validación final se hará contra los datos del ministerio _a posteriori_ (resultados del 2022)
 
 NOTA: Se presupone la disponibilidad de la base previa de del ministerio en 
 - "/desafio_ministerio/chile_2014_2020.csv.gz"
