@@ -14,9 +14,9 @@ NOTA: Se presupone la disponibilidad de la base previa de del ministerio en
 
 La distribución sugerida de presupuesto se encuentra en el archivo "distribucion_presupuesto_2022.csv"
 
-##Asignación del presupuesto
+## Asignación del presupuesto
 
-###Cálculo de probabilidades de abandono
+### Cálculo de probabilidades de abandono
 
 Se utilizó un modelo predictivo para estimar la probabilidad de que cada alumno de la base 2021 abandone sus estudios durante 2022. Para ello, se aprovecha la información histórica de los años anteriores.
 Luego, esas probabilidades se ajustan utilizando los resultados históricos reales. Este paso, llamado calibración, busca que las probabilidades estimadas sean más representativas de lo que efectivamente ocurrió.
