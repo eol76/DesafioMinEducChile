@@ -39,7 +39,7 @@ De esta manera, se busca utilizar el presupuesto de forma eficiente y maximizar 
 
 El resultado obtenido se muestra en la siguiente tabla:
 
-###*RESUMEN DE LA DISTRIBUCION DEL PRESUPUESTO*
+### *RESUMEN DE LA DISTRIBUCION DEL PRESUPUESTO*
 
 
 |                            concepto|       valor|        
