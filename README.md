@@ -47,7 +47,7 @@ El resultado obtenido se muestra en la siguiente tabla:
 |                 Alumnos evaluados| 2775410|
 |      Presupuesto disponible (USD)| 1000000|
 |        Presupuesto asignado (USD)| 1000000|
-|           Alumnos con asignación|6661000|
+|           Alumnos con asignación|6661|
 | Asignación media por alumno (USD)| 360.31
 |           Asignación máxima (USD)| 442|
 |         Beneficio esperado total| 604,36|
