@@ -42,12 +42,13 @@ El resultado obtenido se muestra en la siguiente tabla:
 ============================================================
 RESUMEN DE LA DISTRIBUCION DEL PRESUPUESTO
 ============================================================
-                            concepto        valor
-                              <char>        <num>
-1:                 Alumnos evaluados 2775410
-2:      Presupuesto disponible (USD) 1000000
-3:        Presupuesto asignado (USD) USD 1000000
-4:            Alumnos con asignación USD 6661000
-5: Asignación media por alumno (USD) USD 360.31
-6:           Asignación máxima (USD) USD 442
-7:          Beneficio esperado total 604,36
+
+|                            concepto|       valor|        
+|--------------------------------|----------------|
+|                 Alumnos evaluados| 2775410|
+|      Presupuesto disponible (USD)| 1000000|
+|        Presupuesto asignado (USD)| 1000000|
+|           Alumnos con asignación|6661000|
+| Asignación media por alumno (USD)| 360.31
+|           Asignación máxima (USD)| 442|
+|         Beneficio esperado total| 604,36|
