@@ -37,7 +37,7 @@ Por eso, no se asigna necesariamente la misma cantidad a todos ni se concentra t
 El criterio busca priorizar a los alumnos que presentan mayor riesgo de abandono y, al mismo tiempo, considerar que los recursos destinados a una misma persona tienen un rendimiento decreciente.
 De esta manera, se busca utilizar el presupuesto de forma eficiente y maximizar el beneficio esperado de la intervención.
 
-El resultado obtenido se muestra en la siguiente tabla:
+El resultado obtenido se muestra en la siguiente tabla: 
 
 ### *RESUMEN DE LA DISTRIBUCION DEL PRESUPUESTO*
 
