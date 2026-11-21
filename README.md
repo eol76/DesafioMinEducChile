@@ -36,6 +36,18 @@ El criterio supone que una mayor inversión puede generar un mayor beneficio, pe
 Por eso, no se asigna necesariamente la misma cantidad a todos ni se concentra todo el dinero en quienes tienen la probabilidad más alta. 
 El criterio busca priorizar a los alumnos que presentan mayor riesgo de abandono y, al mismo tiempo, considerar que los recursos destinados a una misma persona tienen un rendimiento decreciente.
 De esta manera, se busca utilizar el presupuesto de forma eficiente y maximizar el beneficio esperado de la intervención.
+
 El resultado obtenido se muestra en la siguiente tabla:
 
-
+============================================================
+RESUMEN DE LA DISTRIBUCION DEL PRESUPUESTO
+============================================================
+                            concepto        valor
+                              <char>        <num>
+1:                 Alumnos evaluados 2775410
+2:      Presupuesto disponible (USD) 1000000
+3:        Presupuesto asignado (USD) USD 1000000
+4:            Alumnos con asignación USD 6661000
+5: Asignación media por alumno (USD) USD 360.31
+6:           Asignación máxima (USD) USD 442
+7:          Beneficio esperado total 604,36
